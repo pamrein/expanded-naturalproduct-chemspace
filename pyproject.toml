@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "dataset-extractor-lotus"
+version = "0.1.0"
+description = "Overview of the master"
+authors = ["pamrein <pascal.amrein@unifr.ch>"]
+license = "BSD3.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+jupyter = "^1.0.0"
+polars = "^1.4.1"
+matplotlib = "^3.9.0"
+pandas = "^2.2.2"
+numpy = "^2.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
