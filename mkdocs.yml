@@ -1,10 +1,10 @@
-site_name: dataset-extractor-lotus
-repo_url: https://github.com/pamrein/dataset-extractor-lotus
-site_url: https://pamrein.github.io/dataset-extractor-lotus
-site_description: Explanation of the extraction from the lotus dataset - masterthesis by P. Amrein
+site_name: expanded-naturalproduct-chemspace
+repo_url: https://github.com/pamrein/expanded-naturalproduct-chemspace
+site_url: https://pamrein.github.io/expanded-naturalproduct-chemspace
+site_description: info and explanation for the masterthesis
 site_author: P. Amrein
 edit_uri: edit/main/docs/
-repo_name: pamrein/dataset-extractor-lotus
+repo_name: pamrein/expanded-naturalproduct-chemspace
 copyright: Maintained by <a href="https://pamrein.com">Florian</a>.
 
 nav:
@@ -43,9 +43,9 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/pamrein/dataset-extractor-lotus
+      link: https://github.com/pamrein/expanded-naturalproduct-chemspace
     - icon: fontawesome/brands/python
-      link: https://pypi.org/project/dataset-extractor-lotus
+      link: https://pypi.org/project/expanded-naturalproduct-chemspace
 
 markdown_extensions:
   - toc:

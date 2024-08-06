@@ -1,15 +1,15 @@
-# dataset-extractor-lotus
+# expanded-naturalproduct-chemspace
 
-[![Release](https://img.shields.io/github/v/release/pamrein/dataset-extractor-lotus)](https://img.shields.io/github/v/release/pamrein/dataset-extractor-lotus)
-[![Build status](https://img.shields.io/github/actions/workflow/status/pamrein/dataset-extractor-lotus/main.yml?branch=main)](https://github.com/pamrein/dataset-extractor-lotus/actions/workflows/main.yml?query=branch%3Amain)
-[![codecov](https://codecov.io/gh/pamrein/dataset-extractor-lotus/branch/main/graph/badge.svg)](https://codecov.io/gh/pamrein/dataset-extractor-lotus)
-[![Commit activity](https://img.shields.io/github/commit-activity/m/pamrein/dataset-extractor-lotus)](https://img.shields.io/github/commit-activity/m/pamrein/dataset-extractor-lotus)
-[![License](https://img.shields.io/github/license/pamrein/dataset-extractor-lotus)](https://img.shields.io/github/license/pamrein/dataset-extractor-lotus)
+[![Release](https://img.shields.io/github/v/release/pamrein/expanded-naturalproduct-chemspace)](https://img.shields.io/github/v/release/pamrein/expanded-naturalproduct-chemspace)
+[![Build status](https://img.shields.io/github/actions/workflow/status/pamrein/expanded-naturalproduct-chemspace/main.yml?branch=main)](https://github.com/pamrein/expanded-naturalproduct-chemspace/actions/workflows/main.yml?query=branch%3Amain)
+[![codecov](https://codecov.io/gh/pamrein/expanded-naturalproduct-chemspace/branch/main/graph/badge.svg)](https://codecov.io/gh/pamrein/expanded-naturalproduct-chemspace)
+[![Commit activity](https://img.shields.io/github/commit-activity/m/pamrein/expanded-naturalproduct-chemspace)](https://img.shields.io/github/commit-activity/m/pamrein/expanded-naturalproduct-chemspace)
+[![License](https://img.shields.io/github/license/pamrein/expanded-naturalproduct-chemspace)](https://img.shields.io/github/license/pamrein/expanded-naturalproduct-chemspace)
 
-Explanation of the extraction from the lotus dataset - masterthesis by P. Amrein
+info and explanation for the masterthesis
 
-- **Github repository**: <https://github.com/pamrein/dataset-extractor-lotus/>
-- **Documentation** <https://pamrein.github.io/dataset-extractor-lotus/>
+- **Github repository**: <https://github.com/pamrein/expanded-naturalproduct-chemspace/>
+- **Documentation** <https://pamrein.github.io/expanded-naturalproduct-chemspace/>
 
 ## Getting started with your project
 
@@ -19,7 +19,7 @@ First, create a repository on GitHub with the same name as this project, and the
 git init -b main
 git add .
 git commit -m "init commit"
-git remote add origin git@github.com:pamrein/dataset-extractor-lotus.git
+git remote add origin git@github.com:pamrein/expanded-naturalproduct-chemspace.git
 git push -u origin main
 ```
 

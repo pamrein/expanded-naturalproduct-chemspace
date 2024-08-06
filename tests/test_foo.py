@@ -1,4 +1,4 @@
-from dataset_extractor_lotus.foo import foo
+from expanded_naturalproduct_chemspace.foo import foo
 
 
 def test_foo():
