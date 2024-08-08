@@ -1,12 +1,16 @@
-# defl = dataset extractor for Lotus
+# module defl = dataset extractor for Lotus
 
 
 import polars as pl
 import numpy as np
 import os, sys
 
+# change the configsetting, to see the full tables
+pl.Config.set_tbl_rows(100)
+pl.Config(fmt_str_lengths=550)
+
 # Example of loading LOTUS datasets with polars (python module)
-def load_lotus(path_file):
+def load_lotus_csv(path_file):
     df_lotus = pl.read_csv(
             path_file,
             infer_schema_length=50000,
