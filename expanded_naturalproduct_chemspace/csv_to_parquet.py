@@ -19,7 +19,7 @@ def convert_tsv_to_parquet(tsv_file):
 
     # Read the TSV file lazily
     try:
-        lazy_frame = pl.scan_csv(tsv_file) #,separator='\t')
+        lazy_frame = pl.scan_csv(tsv_file, infer_schema_length=10000) #,separator='\t')
     except Exception as e:
         print(f"Error reading {tsv_file}: {e}")
         return
