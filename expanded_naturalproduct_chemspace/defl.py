@@ -33,3 +33,22 @@ def load_lotus_csv(path_file):
             .alias("organism_taxonomy_gbifid")
         )
     return df_lotus
+
+
+def find_predicted_compounds(df: pl.dataframe, SMILES_INPUT: str) -> pl.LazyFrame:
+    # Step 1: Find all the entries with the specific SMILES id
+    df_SMILES = df.filter(pl.col("id") == SMILES_INPUT)
+
+    # Step 2: Filter for the starting compounds
+    df_new = df_SMILES.filter(pl.col("type") == "Starting Compound")
+
+    # Step 3: Get all the unique reaction_id
+    df_reactions = df_new.select("reaction_id").unique()
+
+    # Step 4: Filter the original DataFrame to include only the rows with the desired reaction_id and type == "Predicted"
+    df_result = df.filter(
+        pl.col("reaction_id").is_in(df_reactions) & 
+        (pl.col("type") == "Predicted")
+    )
+   
+    return df_result
