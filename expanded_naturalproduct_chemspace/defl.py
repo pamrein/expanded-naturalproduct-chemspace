@@ -52,3 +52,5 @@ def find_predicted_compounds(df: pl.dataframe, SMILES_INPUT: str) -> pl.LazyFram
     )
    
     return df_result
+
+# find moleculename with ID
