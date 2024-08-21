@@ -55,7 +55,11 @@ def get_organisms_for_cid(cid):
         return []
 
 
+<<<<<<< HEAD
 
+=======
+"""
+>>>>>>> c7e1eb7 (update all)
 # connect to MongoDB
 client = MongoClient('mongodb://localhost:27017/')
 db = client['compounds']
@@ -70,6 +74,12 @@ df_mongo = df_mongo.rename({"_id":"_id_mongo",
                             "ID":"ID_mongo", 
                             "SMILES":"SMILES_mongo", 
                             "InChI_key":"InChI_key_mongo"})
+<<<<<<< HEAD
+=======
+"""
+
+df_mongo = pl.read_parquet("../data/MINES/mongo_predicted_compounds.parquet")
+>>>>>>> c7e1eb7 (update all)
 
 # compare SMILES_mongo or smiles_lotus
 smiles_list = df_mongo["SMILES_mongo"].unique().to_list()
