@@ -665,6 +665,17 @@ trio = ["trio (>=0.23)"]
 wmi = ["wmi (>=1.5.1)"]
 
 [[package]]
+name = "docutils"
+version = "0.21.2"
+description = "Docutils -- Python Documentation Utilities"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "docutils-0.21.2-py3-none-any.whl", hash = "sha256:dafca5b9e384f0e419294eb4d2ff9fa826435bf15f15b7bd45723e8ad76811b2"},
+    {file = "docutils-0.21.2.tar.gz", hash = "sha256:3a6b18732edf182daa3cd12775bbb338cf5691468f91eeeb109deff6ebfa986f"},
+]
+
+[[package]]
 name = "exceptiongroup"
 version = "1.2.2"
 description = "Backport of PEP 654 (exception groups)"
@@ -2459,6 +2470,19 @@ files = [
 ]
 
 [[package]]
+name = "pubchempy"
+version = "1.0.4"
+description = "A simple Python wrapper around the PubChem PUG REST API."
+optional = false
+python-versions = "*"
+files = [
+    {file = "PubChemPy-1.0.4.tar.gz", hash = "sha256:24e9dc2fc90ab153b2764bf805e510b1410700884faf0510a9e7cf0d61d8ed0e"},
+]
+
+[package.extras]
+pandas = ["pandas"]
+
+[[package]]
 name = "pure-eval"
 version = "0.2.3"
 description = "Safely evaluate AST nodes without side effects"
@@ -3290,6 +3314,19 @@ pure-eval = "*"
 tests = ["cython", "littleutils", "pygments", "pytest", "typeguard"]
 
 [[package]]
+name = "statistics"
+version = "1.0.3.5"
+description = "A Python 2.* port of 3.4 Statistics Module"
+optional = false
+python-versions = "*"
+files = [
+    {file = "statistics-1.0.3.5.tar.gz", hash = "sha256:2dc379b80b07bf2ddd5488cad06b2b9531da4dd31edb04dc9ec0dc226486c138"},
+]
+
+[package.dependencies]
+docutils = ">=0.3"
+
+[[package]]
 name = "terminado"
 version = "0.18.1"
 description = "Tornado websocket backend for the Xterm.js Javascript terminal emulator library."
@@ -3620,4 +3657,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4.0"
-content-hash = "2fbc19bb763d0a05e911a760d05a0714ba855a6559e219e0a5a8bc2e4a217fb6"
+content-hash = "f909e06349fe13d1d2ec1280abda40163f72f1b50b7f5dc459bfa22dc3483cc8"
