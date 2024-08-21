@@ -56,7 +56,11 @@ def get_organisms_for_cid(cid):
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+"""
+>>>>>>> c7e1eb7 (update all)
 =======
 """
 >>>>>>> c7e1eb7 (update all)
@@ -75,6 +79,12 @@ df_mongo = df_mongo.rename({"_id":"_id_mongo",
                             "SMILES":"SMILES_mongo", 
                             "InChI_key":"InChI_key_mongo"})
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+"""
+
+df_mongo = pl.read_parquet("../data/MINES/mongo_predicted_compounds.parquet")
+>>>>>>> c7e1eb7 (update all)
 =======
 """
 
