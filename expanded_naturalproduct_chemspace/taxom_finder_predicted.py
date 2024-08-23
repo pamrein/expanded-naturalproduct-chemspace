@@ -6,15 +6,13 @@ import matplotlib.pyplot as plt
 import statistics
 from pymongo import MongoClient
 
-df = pl.read_parquet("../data/MINES/reactions_compounds_list.parquet")
+df = pl.read_parquet("../data/MINES/reactions_compounds_list_ID.parquet")
 
-# Filter out rows with empty lists
-df_filtered = df.filter((pl.col("starting_compounds").list.len() > 0) & (pl.col("predicted_compounds").list.len() > 0))
+# Assuming df is your Polars DataFrame and 'starting_compounds_ID' is the column to filter
+pattern = r'^\w{14}-\w{11}-\w{1}$'
+filtered_df = df.filter(pl.col('starting_compounds_ID').str.contains(pattern))
 
-# Ensure both columns have matching element counts
-df = df_filtered.explode(['starting_compounds']).explode(['predicted_compounds'])
-
-predicted_elements_list = df["starting_compounds"].unique().to_list()
+predicted_elements_list = df["starting_compounds_ID"].unique().to_list()
 
 
 # Define the fields to retrieve
@@ -39,7 +37,8 @@ client = MongoClient('mongodb://localhost:27017/')  # Replace with your MongoDB 
 db = client['lotus_mines_enzymatic']
 
 # Select the collection
-collection = db['lotus']
+# collection = db['lotus']
+collection_lotus_original = db['lotus_original']
 
 
 for taxom in taxonomy_fields:
@@ -47,11 +46,11 @@ for taxom in taxonomy_fields:
     
     for starting_compound_id in predicted_elements_list:
         # Query to find the document by _id and retrieve only the taxonomy fields
-        result = collection.find(
-            {"_id": starting_compound_id}, 
+        result = collection_lotus_original.find(
+            {"structure_inchikey": starting_compound_id}, 
             {
                 taxom: 1,
-                "_id": 1
+                "structure_inchikey": 1
             }
         )
 
@@ -63,6 +62,6 @@ for taxom in taxonomy_fields:
     
     
     df_joined = df.join(df_taxonomy, left_on="starting_compounds", right_on="_id", how="left", coalesce=True)
-    df_joined.write_parquet("../data/taxom_"+taxom+".parquet")
+    df_joined.write_parquet("../data/MINES/taxom_"+taxom+".parquet")
 
     print(f"done with {taxom}")
