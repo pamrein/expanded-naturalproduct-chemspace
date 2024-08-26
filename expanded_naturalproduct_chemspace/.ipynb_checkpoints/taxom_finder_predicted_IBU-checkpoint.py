@@ -32,15 +32,13 @@ taxonomy_fields = [
 
 df_lotus = pl.read_parquet("../data/LOTUS/230106_frozen_metadata_cleaned.parquet")
 
-# Create an empty DataFrame with two string columns
-df_taxonomy = pl.DataFrame({
-    "structure_inchikey": pl.Series([], dtype=pl.Utf8),
-    taxom: pl.Series([], dtype=pl.Utf8)
-})
-
 for taxom in taxonomy_fields:
-    result_list = list()
-    
+    # Create an empty DataFrame with two string columns
+    df_taxonomy = pl.DataFrame({
+        "structure_inchikey": pl.Series([], dtype=pl.Utf8),
+        taxom: pl.Series([], dtype=pl.Utf8)
+    })    
+
     for starting_compound_ID in predicted_elements_list:
         result = df_lotus.filter(pl.col("structure_inchikey") == starting_compound_ID)
         result = result.select(pl.col(["structure_inchikey", taxom]))
