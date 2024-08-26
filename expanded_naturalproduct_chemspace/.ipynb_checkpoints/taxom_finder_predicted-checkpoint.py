@@ -30,18 +30,35 @@ taxonomy_fields = [
 ]
 
 
-df_lotus = pl.read_parquet("../data/LOTUS/230106_frozen_metadata_cleaned.parquet")
+# Connect to MongoDB
+client = MongoClient('mongodb://localhost:27017/')  # Replace with your MongoDB connection string
+
+# Select the database
+db = client['lotus_mines_enzymatic']
+
+# Select the collection
+# collection = db['lotus']
+collection_lotus_original = db['lotus_original']
 
 
 for taxom in taxonomy_fields:
     result_list = list()
     
-    for starting_compound_ID in predicted_elements_list:
-        result = df_lotus.filter(pl.col("structure_inchikey") == starting_compound_ID)
-        result = result.select(pl.col(["structure_inchikey", taxom])
-        
-        df_taxonomy = pl.concat([df_taxonomy, result], how="vertical")  
+    for starting_compound_id in predicted_elements_list:
+        # Query to find the document by _id and retrieve only the taxonomy fields
+        result = collection_lotus_original.find(
+            {"structure_inchikey": starting_compound_id}, 
+            {
+                taxom: 1,
+                "structure_inchikey": 1
+            }
+        )
 
+        for one_result in result:
+            print(f'starting_compound_id: {starting_compound_id} -> {one_result}')
+            result_list.append(one_result)
+    
+    df_taxonomy = pl.DataFrame(result_list, infer_schema_length=10000)
     print(df[1:5])
     print(df_taxonomy[1:5])
     df_taxonomy = df_taxonomy.drop("_id")
