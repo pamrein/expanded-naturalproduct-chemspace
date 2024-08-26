@@ -18,50 +18,36 @@ predicted_elements_list = df["starting_compounds_ID"].unique().to_list()
 # Define the fields to retrieve
 taxonomy_fields = [
     "organism_taxonomy_01domain",
-    "organism_taxonomy_02kingdom",
-    "organism_taxonomy_03phylum",
-    "organism_taxonomy_04class",
-    "organism_taxonomy_05order",
-    "organism_taxonomy_06family",
-    "organism_taxonomy_07tribe",
-    "organism_taxonomy_08genus",
-    "organism_taxonomy_09species",
-    "organism_taxonomy_10varietas"
+    #"organism_taxonomy_02kingdom",
+    #"organism_taxonomy_03phylum",
+    #"organism_taxonomy_04class",
+    #"organism_taxonomy_05order",
+    #"organism_taxonomy_06family",
+    #"organism_taxonomy_07tribe",
+    #"organism_taxonomy_08genus",
+    #"organism_taxonomy_09species",
+    #"organism_taxonomy_10varietas"
 ]
 
 
-# Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')  # Replace with your MongoDB connection string
-
-# Select the database
-db = client['lotus_mines_enzymatic']
-
-# Select the collection
-# collection = db['lotus']
-collection_lotus_original = db['lotus_original']
+df_lotus = pl.read_parquet("../data/LOTUS/230106_frozen_metadata_cleaned.parquet")
 
 
 for taxom in taxonomy_fields:
     result_list = list()
     
-    for starting_compound_id in predicted_elements_list:
-        # Query to find the document by _id and retrieve only the taxonomy fields
-        result = collection_lotus_original.find(
-            {"structure_inchikey": starting_compound_id}, 
-            {
-                taxom: 1,
-                "structure_inchikey": 1
-            }
-        )
+    for starting_compound_ID in predicted_elements_list:
+        result = df_lotus.filter(pl.col("structure_inchikey") == starting_compound_ID)
+        result = result.select(pl.col(["structure_inchikey", taxom])
+        
+        df_taxonomy = pl.concat([df_taxonomy, result], how="vertical")  
 
-        for one_result in result:
-            result_list.append(one_result)
-        
-        
-    df_taxonomy = pl.DataFrame(result_list, infer_schema_length=10000)
+    print(df[1:5])
+    print(df_taxonomy[1:5])
+    df_taxonomy = df_taxonomy.drop("_id")
     
-    
-    df_joined = df.join(df_taxonomy, left_on="starting_compounds", right_on="_id", how="left", coalesce=True)
+    df_joined = df.join(df_taxonomy, left_on="starting_compounds_ID", right_on="structure_inchikey", how="left", coalesce=True)
+    print(df_joined[0:10])
     df_joined.write_parquet("../data/MINES/taxom_"+taxom+".parquet")
 
     print(f"done with {taxom}")
