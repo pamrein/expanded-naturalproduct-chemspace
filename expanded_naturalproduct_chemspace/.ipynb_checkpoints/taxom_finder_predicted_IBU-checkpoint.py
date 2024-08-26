@@ -42,8 +42,10 @@ for taxom in taxonomy_fields:
     for starting_compound_ID in predicted_elements_list:
         result = df_lotus.filter(pl.col("structure_inchikey") == starting_compound_ID)
         result = result.select(pl.col(["structure_inchikey", taxom]))
-        
+
+        print(result)
         df_taxonomy = pl.concat([df_taxonomy, result], how="vertical")  
+
 
     print(df[1:5])
     print(df_taxonomy[1:5])
