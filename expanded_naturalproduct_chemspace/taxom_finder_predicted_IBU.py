@@ -18,15 +18,15 @@ predicted_elements_list = df["starting_compounds_ID"].unique().to_list()
 # Define the fields to retrieve
 taxonomy_fields = [
     "organism_taxonomy_01domain",
-    #"organism_taxonomy_02kingdom",
-    #"organism_taxonomy_03phylum",
-    #"organism_taxonomy_04class",
-    #"organism_taxonomy_05order",
-    #"organism_taxonomy_06family",
-    #"organism_taxonomy_07tribe",
-    #"organism_taxonomy_08genus",
-    #"organism_taxonomy_09species",
-    #"organism_taxonomy_10varietas"
+    "organism_taxonomy_02kingdom",
+    "organism_taxonomy_03phylum",
+    "organism_taxonomy_04class",
+    "organism_taxonomy_05order",
+    "organism_taxonomy_06family",
+    "organism_taxonomy_07tribe",
+    "organism_taxonomy_08genus",
+    "organism_taxonomy_09species",
+    "organism_taxonomy_10varietas"
 ]
 
 
@@ -49,7 +49,6 @@ for taxom in taxonomy_fields:
 
     print(df[1:5])
     print(df_taxonomy[1:5])
-    df_taxonomy = df_taxonomy.drop("_id")
     
     df_joined = df.join(df_taxonomy, left_on="starting_compounds_ID", right_on="structure_inchikey", how="left", coalesce=True)
     print(df_joined[0:10])
