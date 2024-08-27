@@ -32,6 +32,7 @@ for smile in smiles:
         if cid_compound == None:
             continue;
         else:
+
             additional_data = [
                 [smile, cid_compound],
             ]
