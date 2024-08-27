@@ -16,8 +16,6 @@ df_mongo = pl.read_parquet("../data/MINES/mongo_predicted_compounds.parquet")
 file = "../data/taxonomy/smiles_cid.tsv"
 smiles = df_mongo["SMILES_mongo"].unique().to_list()
 
-smiles = smiles[0:50]
-
 
 # Header to add
 header = ['smile', 'cid_compound', 'error']
