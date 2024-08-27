@@ -43,7 +43,7 @@ for taxom in taxonomy_fields:
         result = df_lotus.filter(pl.col("structure_inchikey") == starting_compound_ID)
         result = result.select(pl.col(["structure_inchikey", taxom]))
 
-        print(result)
+        # print(result)
         df_taxonomy = pl.concat([df_taxonomy, result], how="vertical")  
 
 
