@@ -49,14 +49,6 @@ for smile in smiles:
                     [smile, cid_compound, False],
                 ]
                 
-            if cid_compound == None:
-                continue;
-            else:
-
-                additional_data = [
-                    [smile, cid_compound],
-                ]
-            
                 # Write data to a TSV file
                 with open(file, 'a', newline='') as file:
                     writer = csv.writer(file, delimiter='\t')
