@@ -1,5 +1,7 @@
 import pubchempy as pcp
 import csv, os
+import polars as pl
+
 
 df_mongo = pl.read_parquet("../data/MINES/mongo_predicted_compounds.parquet")
 file = "../data/taxonomy/smiles_cid.tsv"
