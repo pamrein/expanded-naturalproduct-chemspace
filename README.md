@@ -11,8 +11,11 @@ All scripts relevant to the MSc thesis ‘Expanded natural product chemspace’ 
 
 ## scripts
 More details about the scripts can be found in the jupyter-lab files.  
-(expanded-naturalproduct-chemspace/*)
-[LOTUS overview](/data/01_LOTUS_overview.ipynb):
+(expanded-naturalproduct-chemspace/*)  
+
+
+[LOTUS overview](/data/01_LOTUS_overview.ipynb):  
+Read in the data from LOTUS (the file has some errors, why there is a specific way).
 
 [MINES Input](/data/02_MINES_input_files.ipynb):  
 Analyzing the Inputdata from Lotus and reaction rules.
