@@ -6,4 +6,4 @@ More details to the scripts can be found in the jupyter-lab files.
 
 Download masterthesis: <data/2024_masterthesis_expanded_np_chemspace_EN.pdf>
 
-[Masterthesis](data%20expanded_np_chemspace.pdf)
+[Masterthesis](/data/expanded_np_chemspace.pdf)
