@@ -5,3 +5,5 @@ All relevant scripts for the masterthesis "Expanded natural product chemspace" c
 More details to the scripts can be found in the jupyter-lab files.
 
 Download masterthesis: <data/2024_masterthesis_expanded_np_chemspace_EN.pdf>
+
+[Masterthesis](data%20expanded_np_chemspace.pdf)
