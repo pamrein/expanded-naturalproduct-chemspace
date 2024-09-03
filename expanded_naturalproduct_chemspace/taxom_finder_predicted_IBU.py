@@ -17,14 +17,14 @@ predicted_elements_list = df["starting_compounds_ID"].unique().to_list()
 
 # Define the fields to retrieve
 taxonomy_fields = [
-    "organism_taxonomy_01domain",
-    "organism_taxonomy_02kingdom",
-    "organism_taxonomy_03phylum",
-    "organism_taxonomy_04class",
-    "organism_taxonomy_05order",
-    "organism_taxonomy_06family",
-    "organism_taxonomy_07tribe",
-    "organism_taxonomy_08genus",
+    #"organism_taxonomy_01domain",
+    #"organism_taxonomy_02kingdom",
+    #"organism_taxonomy_03phylum",
+    #"organism_taxonomy_04class",
+    #"organism_taxonomy_05order",
+    #"organism_taxonomy_06family",
+    #"organism_taxonomy_07tribe",
+    #"organism_taxonomy_08genus",
     "organism_taxonomy_09species",
     "organism_taxonomy_10varietas"
 ]
@@ -52,6 +52,6 @@ for taxom in taxonomy_fields:
     
     df_joined = df.join(df_taxonomy, left_on="starting_compounds_ID", right_on="structure_inchikey", how="left", coalesce=True)
     print(df_joined[0:10])
-    df_joined.write_parquet("../data/MINES/taxom_"+taxom+".parquet")
+    df_joined.write_parquet("../data/taxonomy/taxom_"+taxom+".parquet")
 
     print(f"done with {taxom}")
