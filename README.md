@@ -19,22 +19,36 @@ Small statistics about the used dataset.
 
 To address the formatting issues in dataset v10, you can read the data with some additional options or preprocessing steps. Here's an example code block:  
 ```python
-import pandas as pd
+import polars as pl
+import numpy as np
 
 # Specify the path to the dataset
 file_path = "path_to_dataset_v10.csv"
 
-# Read the data with careful handling of formatting issues
-data = pd.read_csv(
-    file_path,
-    delimiter=",",  # Adjust delimiter if necessary
-    skipinitialspace=True,  # Remove extra spaces
-    error_bad_lines=False,  # Skip problematic lines
-    engine="python"  # Use Python engine for flexibility
-)
+# Example of loading LOTUS datasets with polars (python module)
+df_lotus = pl.read_csv(
+        file_path,
+        infer_schema_length=50000,
+        null_values=["", "NA"],
+        schema_overrides=
+        {
+            "structure_xlogp": pl.Float32,
+            "structure_cid": pl.UInt32,
+            "organism_taxonomy_ncbiid": pl.UInt32,
+            "organism_taxonomy_ottid": pl.UInt32,
+            "structure_stereocenters_total": pl.UInt32,
+            "structure_stereocenters_unspecified": pl.UInt32,
+        },
+    )
 
-# Display a preview of the dataset
-print(data.head())
+df_lotus = df_lotus.with_columns(
+        pl.col("organism_taxonomy_gbifid")
+        .map_elements(lambda x: np.nan if x.startswith("c(") else x)
+        .cast(pl.UInt32)
+        .alias("organism_taxonomy_gbifid")
+    )
+
+print(f"all columns of LOTUS (total: {df_lotus.shape[1]}): \n{df_lotus.columns}")
 ```
 
 [MINES Input](/expanded_naturalproduct_chemspace/02_MINES_input_files.ipynb):  
